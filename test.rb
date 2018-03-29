@@ -2,10 +2,17 @@ require 'capybara/dsl'
 
 url = "https://coinpot.co/mine/coinpottokens/?ref=6FD332D08478"
 
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w(headless disable-gpu) }
+  )
+
+  Capybara::Selenium::Driver.new app,
+    browser: :chrome,
+    desired_capabilities: capabilities
 end
-Capybara.current_driver = :selenium
+
+Capybara.default_driver = :headless_chrome
 
 include Capybara::DSL
 
