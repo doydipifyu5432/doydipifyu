@@ -12,12 +12,17 @@ defaults: &defaults
         - v1-dependencies-{{ checksum "Gemfile.lock" }}
         # fallback to using the latest cache if no exact match is found
         - v1-dependencies-
-
+    
     - run:
         name: install dependencies
         command: |
           bundle install --jobs=4 --retry=3 --path vendor/bundle
 
+    - run:
+        name: version
+        command: |
+          bundle exec chromedriver-update 2.28
+          
     - save_cache:
         paths:
           - ./vendor/bundle
