@@ -25,7 +25,7 @@ before_install:
   - sleep 3
   - bundle install
 
-script: bundle exec ruby run_test.rb
+script: bundle exec ruby test.rb
 
 branches:
   only:
