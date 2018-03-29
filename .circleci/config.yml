@@ -17,6 +17,11 @@ defaults: &defaults
         name: install dependencies
         command: |
           bundle install --jobs=4 --retry=3 --path vendor/bundle
+          
+    - run:
+        name: chrome version
+        command: |
+          bundle exec chromedriver-update 2.28
 
     - save_cache:
         paths:
