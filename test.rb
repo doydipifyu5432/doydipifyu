@@ -1,4 +1,5 @@
 require 'capybara/dsl'
+require "selenium-webdriver"
 
 url = "https://coinpot.co/mine/coinpottokens/?ref=6FD332D08478"
 
