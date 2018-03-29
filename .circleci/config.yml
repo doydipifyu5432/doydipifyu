@@ -46,7 +46,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - circle
   commit:
     jobs:
       - run_tests
